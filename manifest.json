@@ -1,0 +1,87 @@
+{
+  "manifest_version": 3,
+  "name": "RangiExtention",
+  "version": "1.0",
+  "description": "Rangitoto school website plugins",
+
+  "permissions": [
+    "storage", "tabs", "activeTab"
+  ],
+  "host_permissions": [
+    "https://spider.rangitoto.school.nz/*"
+  ],
+
+  "action": {
+    "default_popup": "popup.html"
+  },
+
+  "content_scripts": [
+    {
+      "matches": [
+        "https://spider.rangitoto.school.nz/Pages/StudentInformation.aspx"
+      ],
+      "css": [
+        "mystyle.css"
+      ],
+      "js": [
+        "myscript.js"
+      ]
+    },
+    
+    {
+      "matches": [
+        "https://spider.rangitoto.school.nz/*"
+      ],
+      "css": [
+        "src/general.css"
+      ],
+      "js": [
+        "inject.js", 
+        "src/general.js"
+      ],
+      "world": "MAIN",
+      "run_at": "document_start"
+    }, 
+    
+    {
+      "matches": [
+        "https://idp.rangitoto.school.nz/module.php/core/*"
+      ], 
+      "js": [
+        "login/login.js"
+      ], 
+      "css": [
+        "login/login.css"
+      ],
+      "run_at": "document_idle", 
+      "world": "MAIN"
+    },
+    {
+      "matches": [
+        "https://spider.rangitoto.school.nz/fsmfe/home*"
+      ],
+      "js": [
+        "home/home.js"
+      ],
+      "css": [
+        "home/home.css"
+      ],
+      "run_at": "document_start"
+    }, 
+    {
+      "matches" : [
+        "https://spider.rangitoto.school.nz/Pages/Calendar/Calendar.aspx"
+      ], 
+      "css": [
+        "calendar/calendar.css"
+      ]
+    }
+  ],
+  
+  "web_accessible_resources": [
+    {
+      "resources": ["inject.js", "profilePic.jpg"],
+      "matches": ["https://spider.rangitoto.school.nz/*"]
+    }
+  ]
+}

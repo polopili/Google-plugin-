@@ -1,0 +1,253 @@
+/* Reset some default styles */
+*, html, body, input, button, select, textarea, h1, h2, p, span, a {
+    font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif !important;
+}
+
+
+html {
+    background-image: none !important;
+    background-color: #f5f5f5 !important;
+}
+.grecaptcha-badge {
+    display: none !important;
+}
+a[href="https://www.ourschool.co.nz"] {
+    display: none !important;
+}
+#nav {
+    display: none !important;
+}
+
+body {
+    display: flex;
+    background-color: #ffffff !important;
+    min-height: 100vh;
+}
+
+#logo {
+    display: flex;
+    justify-content: flex-start;
+}
+
+#logo img {
+    display: block; 
+    width: 20% !important;
+    height: auto;
+    content: url("https://www.rangitoto.school.nz/app/uploads/2021/05/logo-dark-mobile.png")
+}
+
+/* brand */
+#brand {
+    position: relative;
+    overflow: hidden;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    padding: 4.5rem 4.5rem;
+    color: #ffffff;
+    background: linear-gradient(160deg, #0c447c 0%, #185fa5 100%);
+    font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    flex: 0 0 40%;
+    min-height: 100vh;
+}
+
+/* logo shape */
+#brand::before {
+    content: "";
+    position: absolute;
+    right: -90px;
+    bottom: -70px;
+    width: 560px;
+    height: 670px;
+    background: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 120' preserveAspectRatio='none'><path d='M0 0 H100 V58 C100 92 65 120 50 120 C35 120 0 92 0 58 Z' fill='%23fff'/></svg>") no-repeat center / 100% 100%;
+    opacity: 0.06;
+    pointer-events: none;
+}
+
+/* --- 顶部：Logo + 校名 --- */
+.brand-top {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.brand-top .brand-logo {
+    height: 56px;
+    width: auto;
+    filter: brightness(0) invert(1);
+}
+
+.brand-top span {
+    font-size: 40px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+/* --- 标语，垂直居中 --- */
+.brand-mid {
+    position: relative;
+    margin-top: 16vh;
+    margin-bottom: auto;
+}
+
+.brand-mid .kicker {
+    display: inline-block;
+    margin-bottom: 28px;
+    padding-left: 14px;
+    border-left: 4px solid #B30838;
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: #C1D3E4;
+}
+
+.brand-mid h1 {
+    margin: 0;
+    font-size: 46px;
+    line-height: 1.22;
+    font-weight: 700;
+    color: #ffffff;
+}
+
+.brand-mid .brand-sub {
+    margin: 24px 0 0;
+    max-width: 24em;
+    font-size: 18px;
+    line-height: 1.6;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.72);
+}
+
+/* --- 链接 --- */
+.brand-foot {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    padding-top: 22px;
+    border-top: 1px solid rgba(255, 255, 255, 0.18);
+    font-size: 16px;
+}
+
+.brand-foot a {
+    color: #85b7eb;
+    text-decoration: none;
+    transition: color 0.15s ease;
+}
+
+.brand-foot a:hover {
+    color: #ffffff;
+}
+
+
+
+@media (max-width: 1200px) {
+    #brand {
+        padding: 3rem 3rem;
+    }
+    .brand-mid h1 {
+        font-size: 36px;
+    }
+    #brand::before {
+        width: 440px;
+        height: 525px;
+    }
+}
+
+@media (max-width: 900px) {
+    #brand {
+        padding: 2rem 1.5rem;
+    }
+    #brand::before {
+        width: 300px;
+        height: 360px;
+        right: -50px;
+        bottom: -40px;
+    }
+    .brand-mid h1 {
+        font-size: 28px;
+    }
+    .brand-mid .brand-sub {
+        font-size: 15px;
+        margin-top: 18px;
+    }
+}
+
+/* hide brand on small screens */
+@media (max-width: 640px) {
+    #brand {
+        display: none;
+    }
+}
+
+
+#form {
+    order: 2;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center !important;
+    align-items: center;
+    width: 60%;
+    background-size: cover;
+    background-position: center;
+    min-height: 100vh;
+}
+
+/* 登录卡背后的淡校徽水印 */
+#form::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 900px;
+    height: 900px;
+    background: url("https://www.rangitoto.school.nz/app/uploads/2021/05/logo-dark-mobile.png") no-repeat center / contain;
+    filter: grayscale(1);
+    opacity: 0.07;
+    pointer-events: none;
+    z-index: 0;
+}
+
+#login form {
+    position: relative;
+    z-index: 1;
+    border-radius: 5px !important;
+    padding: 20px !important;
+    transform: scale(1.15);
+    transform-origin: center;
+    box-shadow: 0 12px 32px rgba(12, 68, 124, 0.14), 0 2px 8px rgba(0, 0, 0, 0.06) !important;
+}
+
+input[type="submit"] {
+    background-color: #B30838 !important;
+    border: none !important;
+    display: block !important;
+    margin: 0 auto !important;
+    float: none !important;
+    width: 100% !important;
+    border-radius: 4px !important;
+}
+
+#title_area {
+    text-align: left !important;
+}
+
+#title {
+    margin-left: 15px !important;
+    color: #B30838;
+    font-size: 20px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+#subtitle {
+    position: absolute !important;
+    margin-left: 15px !important;
+    color: #5D6674;
+    font-size: 12px;
+    margin-top: 2px;
+}
