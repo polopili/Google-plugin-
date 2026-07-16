@@ -1,3 +1,98 @@
 .calendar_content_box {
     color: #fff !important;
 }
+
+.box_head {
+    background-color: #004687 !important;
+}
+.btn.btn-primary.search {
+    background-color: #004687 !important;
+}
+.modal-title {
+    background-color: #004687 !important;
+}
+.table_grid_header_text_color {
+    background-color: #004687 !important;
+}
+
+.modal-header.pop_up_header_bg{
+    background-color: #004687 !important;
+}
+
+details.cal_group {
+    margin: 2px 0;
+    border: 1px solid #e2e2e2;
+    border-radius: 4px;
+    overflow: hidden;
+    background: #fff;
+}
+
+summary.cal_group_summary {
+    cursor: pointer;
+    list-style: none;               
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 4px 7px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #333;
+    background: #f3f6fb;
+    user-select: none;
+}
+summary.cal_group_summary::-webkit-details-marker { display: none; }  /* Chrome：去掉默认三角 */
+
+summary.cal_group_summary::before {
+    content: '\25B6';               /* ▶ */
+    font-size: 9px;
+    color: #888;
+    transition: transform .15s ease;
+    flex: 0 0 auto;
+}
+details.cal_group[open] > summary.cal_group_summary::before {
+    transform: rotate(90deg);       /* when expand: ▼ */
+}
+
+.cal_group_dot {
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+    display: inline-block;
+    flex: 0 0 auto;
+}
+.cal_group_name {
+    flex: 1 1 auto;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.cal_group_count {
+    flex: 0 0 auto;
+    min-width: 18px;
+    text-align: center;
+    font-size: 12px;
+    font-weight: 600;
+    color: #555;
+    border: 0px;
+    padding: 0 5px;
+}
+.cal_group_body {
+    padding: 3px;
+}
+.cal_group_body .calendar_content_box {
+    margin: 2px 0;
+}
+
+/* ===== 整体放大字体（改这里的数值即可统一调大/调小） ===== */
+table.table-calendar {
+    font-size: 15px;                 /* 表格基准字号 */
+}
+table.table-calendar td h3 {
+    font-size: 15px;                 /* 每格的日期/星期标题 */
+}
+table.table-calendar td.weekno a {
+    font-size: 16px;                 /* 左侧周次 */
+}
+table.table-calendar td .calendar_content_box {
+    font-size: 14px !important;      /* 事件文字（站点样式特异性高，需要 !important 压过） */
+}

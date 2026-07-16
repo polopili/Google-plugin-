@@ -71,16 +71,20 @@
     {
       "matches" : [
         "https://spider.rangitoto.school.nz/Pages/Calendar/Calendar.aspx"
+      ],
+      "js":[
+        "calendar/calendar.js"
       ], 
       "css": [
         "calendar/calendar.css"
-      ]
+      ], 
+      "run_at": "document_idle"
     }
   ],
   
   "web_accessible_resources": [
     {
-      "resources": ["inject.js", "profilePic.jpg"],
+      "resources": ["inject.js", "profilePic.jpg", "calendar/inject.js"],
       "matches": ["https://spider.rangitoto.school.nz/*"]
     }
   ]

@@ -2,6 +2,7 @@ console.log("inject.js worked");
 const attendancePath = "/api/home/MyStudentsAttendance";
 const calendarPath = "/Handlers/Calendar.asmx/GetCalendarTypes";
 const calendarEventsPath = "/Handlers/Calendar.asmx/GetCalendar";
+const calendarShowPath = "/Handlers/Calendar.asmx/GetDayCalendar"
 
 // define rules to change a request
 const rules = {
@@ -20,15 +21,15 @@ const rules = {
     }, 
     [calendarPath]: function (data) {
         const colorRules = {
-            "Holidays / Non-contact days": "8B6DB8",  // 紫，提亮一点
-            "Assessments":                 "D0483A",  // 红
-            "Exams":                       "A83328",  // 深红
-            "Test":                        "EB8B33",  // 橙
-            "General":                     "6B7C8E",  // 蓝灰
-            "Daily Messages":              "3492CE",  // 钢蓝
-            "Homework":                    "D97D2A",  // 焦糖
-            "Student lunchtime events":    "48A862",  // 绿
-            "Trips":                       "2C7FB5",  // 靛蓝
+            "Holidays / Non-contact days": "8B6DB8",  // #8B6DB8
+            "Assessments":                 "D0483A",  // #D0483A
+            "Exams":                       "A83328",  // #A83328
+            "Test":                        "EB8B33",  // #EB8B33
+            "General":                     "6B7C8E",  // #6B7C8E
+            "Daily Messages":              "3492CE",  // #3492CE
+            "Homework":                    "D97D2A",  // #D97D2A
+            "Student lunchtime events":    "48A862",  // #48A862
+            "Trips":                       "2C7FB5",  // #2C7FB5
         };
         for (const types of Object.values(data.d)) {
                 if (Object.hasOwn(colorRules, types.Name)) {
@@ -45,7 +46,27 @@ const rules = {
             data.d.Types["HD"].Color = "7A4BA8";   // Holiday 紫
         }
         return data;
+    }, 
+    [calendarShowPath]: function (data) {
+        const colorRules = {
+            "Holiday": "8B6DB8",  // #8B6DB8
+            "Assessments":                 "D0483A",  // #D0483A
+            "Exams":                       "A83328",  // #A83328
+            "Test":                        "EB8B33",  // #EB8B33
+            "General":                     "6B7C8E",  // #6B7C8E
+            "Daily Messages":              "3492CE",  // #3492CE
+            "Homework":                    "D97D2A",  // #D97D2A
+            "Student lunchtime events":    "48A862",  // #48A862
+            "Trips":                       "2C7FB5",  // #2C7FB5
+        };
+        for (const type of Object.values(data.d.Types)) {
+            if (Object.hasOwn(colorRules, type.Name)) {
+                type.Color = colorRules[type.Name];
+            }
+        }
+        return data; 
     }
+
 };
 
 // a general function to apply the change. 

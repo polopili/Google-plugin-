@@ -1,5 +1,4 @@
-/* Anti-FOUC：改造完成前隐藏内容区，避免刷新时闪现原始单列布局。
-   home.js 会在最开始给 <html> 加 .rangi-loading，改造完成或超时后移除。 */
+/* to hide the original view */
 html.rangi-loading .max-w-7xl {
   visibility: hidden !important;
 }
