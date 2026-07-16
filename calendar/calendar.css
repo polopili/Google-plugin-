@@ -1,6 +1,12 @@
 .calendar_content_box {
     color: #fff !important;
 }
+.row.box_content {
+    display: none !important;
+}
+.modal-open {
+    overflow: visible !important;
+}
 
 .box_head {
     background-color: #004687 !important;
@@ -83,16 +89,111 @@ details.cal_group[open] > summary.cal_group_summary::before {
     margin: 2px 0;
 }
 
-/* ===== 整体放大字体（改这里的数值即可统一调大/调小） ===== */
+/* ungrouped types (Holiday): sit directly in the cell, no accordion around them */
+.calendar_content_box.cal_bare {
+    margin: 2px 0;
+}
+
+.day_calendar_popup.cal_popover {
+    background: transparent !important;
+    pointer-events: none;
+}
+
+body.modal-open:has(.day_calendar_popup.cal_popover.active) {
+    overflow: auto !important;
+    padding-right: 0 !important;
+}
+
+body:has(.day_calendar_popup.cal_popover.active) .model_floating_overlay {
+    display: none !important;
+}
+
+.day_calendar_popup.cal_popover > .modal-dialog {
+    position: fixed !important;
+    margin: 0 !important;
+    width: 380px !important;
+    max-width: calc(100vw - 20px) !important;
+    pointer-events: auto;
+}
+
+.day_calendar_popup.cal_popover .modal-content {
+    border-radius: 6px;
+    box-shadow: 0 6px 24px rgba(0, 0, 0, .28);
+}
+.day_calendar_popup.cal_popover .modal-header {
+    padding: 6px 10px;
+}
+.day_calendar_popup.cal_popover .modal-title {
+    font-size: 14px;
+}
+.day_calendar_popup.cal_popover .modal-body {
+    padding: 8px 10px;
+    max-height: 60vh;
+    overflow-y: auto;
+}
+
+.day_calendar_popup.cal_popover .event_msg_box h5 {
+    font-size: 14px;
+    line-height: 1.45;
+    margin: 0;
+    overflow: visible;
+}
+
+/* clearfix 的 ::before/::after 成对存在，float 取消后它们变成实体块压住正文 */
+.day_calendar_popup.cal_popover .event_msg_box h5::before,
+.day_calendar_popup.cal_popover .event_msg_box h5::after {
+    display: none !important;
+    content: none !important;
+}
+.day_calendar_popup.cal_popover .event_msg_box ul.events_things,
+.day_calendar_popup.cal_popover .event_msg_box ul.events_things > li {
+    float: none !important;
+    position: static !important;
+    display: block !important;
+    width: auto !important;
+    max-width: none !important;
+    text-align: left !important;
+    margin: 3px 0 0 !important;
+}
+.day_calendar_popup.cal_popover .event_msg_box ul.events_things > li {
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-size: 12px;
+}
+.day_calendar_popup.cal_popover .event_msg_box ul.events_things > li:empty {
+    display: none !important;
+}
+.day_calendar_popup.cal_popover .event_msg_box {
+    padding: 6px 8px;
+    border-bottom: 1px solid #eee;
+}
+.day_calendar_popup.cal_popover .event_msg_box p {
+    margin: 4px 0 0;
+    font-size: 13px;
+}
+.day_calendar_popup.cal_popover .panel-heading {
+    padding: 4px 8px;
+}
+.day_calendar_popup.cal_popover .panel-title {
+    font-size: 13px;
+}
+.day_calendar_popup.cal_popover .panel-body {
+    padding: 4px;
+}
+.day_calendar_popup.cal_popover .panel {
+    margin-bottom: 6px;
+}
+
+
 table.table-calendar {
-    font-size: 15px;                 /* 表格基准字号 */
+    font-size: 15px;                 
 }
 table.table-calendar td h3 {
-    font-size: 15px;                 /* 每格的日期/星期标题 */
+    font-size: 15px;                 
 }
 table.table-calendar td.weekno a {
-    font-size: 16px;                 /* 左侧周次 */
+    font-size: 16px;                 
 }
 table.table-calendar td .calendar_content_box {
-    font-size: 14px !important;      /* 事件文字（站点样式特异性高，需要 !important 压过） */
+    font-size: 14px !important;      
 }
