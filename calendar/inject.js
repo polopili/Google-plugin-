@@ -36,7 +36,7 @@
     function buildGroup(meta, boxes) {
         var details = el('details', { className: 'cal_group' });
             
-        details.open = boxes.length === 1 ? true : false; // default close when length > 1
+        details.open = true; // default open
 
         var summary = el('summary', { className: 'cal_group_summary' });
         summary.appendChild(el('span', { className: 'cal_group_dot', style: { background: '#' + meta.color } }));
@@ -131,7 +131,6 @@
         return popup && popup.classList.contains('cal_popover') &&
                popup.classList.contains('active');
     }
-
 
     var originalLoader = window.showDynamicLoader;
     if (typeof originalLoader === 'function') {

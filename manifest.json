@@ -20,11 +20,8 @@
       "matches": [
         "https://spider.rangitoto.school.nz/Pages/StudentInformation.aspx"
       ],
-      "css": [
-        "mystyle.css"
-      ],
       "js": [
-        "myscript.js"
+        "profilePic.js"
       ]
     },
     

@@ -13,5 +13,7 @@
         document.addEventListener('DOMContentLoaded', () => {
             (document.head || document.documentElement).appendChild(script);
         });
-    }
+    };
+
+    document.querySelectorAll('.close span').forEach(el => el.remove());
 })();
