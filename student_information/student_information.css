@@ -1,0 +1,68 @@
+.head_time_table.cell_width,
+.btn.btn-primary,
+.table_grid_header_text_color,
+.pop_up_sub_header_bg,
+#StudentNZQASummaryTable thead,
+th.text-center,
+.list-group-item-info,
+.active
+{
+    background-color: #4074A5 !important;
+}
+.glyphicon,
+.fas,
+.glyphicon-certificate::before
+{   
+    color:#4074A5 !important;
+}
+.glyphicon-print,
+.text-left,
+.glyphicon-edit,
+.glyphicon-certificate,
+th.text-center,
+.btn.btn-warning.btn-xs i::before
+{
+    color: #fff !important;
+}
+.btn.btn-info.btn-xs.workset,
+.btn.btn-default.btn-xs.active::after,
+#STUDENTINFORMATION
+{
+    display: none !important;
+}
+.active::after,
+.row.box_content::after,
+.row.box_content::before
+{
+    border-left-color: #4074A5 !important;
+}
+.row,
+.btn.btn-default.btn-xs.active,
+.nav.nav-tabs.student_attendance
+{
+    background-color: #fff !important;
+}
+
+[style*="#CD651C"] { background-color: #E9724C !important; }
+[style*="#FFD710"] { background-color: #F2B705 !important; }
+[style*="#A52A2A"] { background-color: #D64550 !important; }
+[style*="#009933"] { background-color: #2A9D8F !important; }
+[style*="#483D8B"] { background-color: #3A5A7A !important; }
+[style*="#008B8B"] { background-color: #7D5BA6 !important; }
+[style*="#EE0000"] { background-color: #D62828 !important; }
+[style*="#FFFF11"] { background-color: #F77F00 !important; }
+[style*="#0011AA"] { background-color: #0077B6 !important; }
+[style*="#00AA00"] { background-color: #38B000 !important; }
+
+svg .highcharts-color-0 { fill: #E9724C !important; }
+svg .highcharts-color-1 { fill: #F2B705 !important; }
+svg .highcharts-color-2 { fill: #D64550 !important; }
+svg .highcharts-color-3 { fill: #2A9D8F !important; }
+svg .highcharts-color-4 { fill: #3A5A7A !important; }
+svg .highcharts-color-5 { fill: #7D5BA6 !important; }
+
+[style*="#F4B455"] { background-color: #F5B94D !important; }
+[style*="#F5894F"] { background-color: #F58A5A !important; }
+[style*="#6FE7FD"] { background-color: #5FD3E8 !important; }
+[style*="#D271FF"] { background-color: #C878F0 !important; }
+[style*="#D0FF8D"] { background-color: #A8DD6E !important; }

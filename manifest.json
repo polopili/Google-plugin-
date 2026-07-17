@@ -1,6 +1,6 @@
 {
   "manifest_version": 3,
-  "name": "RangiExtention",
+  "name": "RangiExtension",
   "version": "1.0",
   "description": "Rangitoto school website plugins",
 
@@ -21,7 +21,10 @@
         "https://spider.rangitoto.school.nz/Pages/StudentInformation.aspx"
       ],
       "js": [
-        "profilePic.js"
+        "student_information/student_information.js"
+      ], 
+      "css": [
+        "student_information/student_information.css"
       ]
     },
     
