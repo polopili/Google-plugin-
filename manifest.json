@@ -3,18 +3,17 @@
   "name": "RangiExtension",
   "version": "1.0",
   "description": "Rangitoto school website plugins",
-
   "permissions": [
-    "storage", "tabs", "activeTab"
+    "storage",
+    "tabs",
+    "activeTab"
   ],
   "host_permissions": [
-    "https://spider.rangitoto.school.nz/*"
+    "<all_urls>"
   ],
-
   "action": {
     "default_popup": "popup.html"
   },
-
   "content_scripts": [
     {
       "matches": [
@@ -22,12 +21,11 @@
       ],
       "js": [
         "student_information/student_information.js"
-      ], 
+      ],
       "css": [
         "student_information/student_information.css"
       ]
     },
-    
     {
       "matches": [
         "https://spider.rangitoto.school.nz/*"
@@ -36,25 +34,23 @@
         "src/general.css"
       ],
       "js": [
-        "inject.js", 
+        "inject.js",
         "src/general.js"
       ],
       "world": "MAIN",
       "run_at": "document_start"
-    }, 
-    
+    },
     {
       "matches": [
         "https://idp.rangitoto.school.nz/module.php/core/*"
-      ], 
+      ],
       "js": [
         "login/login.js"
-      ], 
+      ],
       "css": [
         "login/login.css"
       ],
-      "run_at": "document_idle", 
-      "world": "MAIN"
+      "run_at": "document_idle"
     },
     {
       "matches": [
@@ -65,27 +61,33 @@
       ],
       "css": [
         "home/home.css"
-      ],
-      "run_at": "document_start"
-    }, 
+      ]
+    },
     {
-      "matches" : [
+      "matches": [
         "https://spider.rangitoto.school.nz/Pages/Calendar/Calendar.aspx"
       ],
-      "js":[
+      "js": [
         "calendar/calendar.js"
-      ], 
+      ],
       "css": [
         "calendar/calendar.css"
-      ], 
+      ],
       "run_at": "document_idle"
     }
   ],
-  
   "web_accessible_resources": [
     {
-      "resources": ["inject.js", "profilePic.jpg", "calendar/inject.js"],
-      "matches": ["https://spider.rangitoto.school.nz/*"]
+      "resources": [
+        "inject.js",
+        "profilePic.jpg",
+        "calendar/inject.js",
+        "DailyNotice/DailyNotice.html",
+        "lib/pdf.worker.mjs"
+      ],
+      "matches": [
+        "<all_urls>"
+      ]
     }
   ]
 }

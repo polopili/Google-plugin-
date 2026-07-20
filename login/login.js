@@ -1,9 +1,14 @@
-(function() {
+(function () {
     'use strict';
+
+    let dailyNotice = "";
+
+    dailyNotice = chrome.runtime.getURL("DailyNotice/DailyNotice.html");
+
     const left = document.createElement('aside');
     left.id = 'brand';
-    left.innerHTML = 
-    `
+    left.innerHTML =
+        `
     <div class="brand-top">
         <img src="https://www.rangitoto.school.nz/app/uploads/2021/05/logo-dark-mobile.png" class="brand-logo">
         <span>Rangitoto College</span>
@@ -14,7 +19,7 @@
     </div>
     <div class="brand-foot">
         <a href="https://www.rangitoto.school.nz/">School Website</a>
-        <a href="https://www.rangitoto.school.nz/parents-students/communications/daily-notices/">Daily Notices</a>
+        <a href="${dailyNotice}">Daily Notices</a>
         <a href="https://sites.google.com/a/cloud.rangitoto.school.nz/ranginet-home">RangiNet</a>
     </div>
     `;

@@ -1,14 +1,28 @@
 (function () {
   'use strict';
-  
+
   // tag the page to hide the original view 
   document.documentElement.classList.add('rangi-loading');
   function reveal() {
     document.documentElement.classList.remove('rangi-loading');
   }
 
-  const INJECT_ID = '__rangi-menu-notifications'; 
-  const TWOCOL_ID = '__rangi-two-col';            
+  const url = chrome.runtime.getURL("DailyNotice/DailyNotice.html");
+
+  function replaceLinks() {
+    const links = document.querySelectorAll('a[href*="daily-notices"]');
+    links.forEach(link => {
+      if (link.href !== url) link.href = url;
+    });
+  }
+
+  replaceLinks();
+
+  const observer = new MutationObserver(replaceLinks);
+  observer.observe(document.body, { childList: true, subtree: true });
+
+  const INJECT_ID = '__rangi-menu-notifications';
+  const TWOCOL_ID = '__rangi-two-col';
 
   // bell svg (from the original page)
   const BELL_SVG =
@@ -47,7 +61,7 @@
     if (!menuCard || !notiCard) return false; // if both not exist 
 
     const targetCol = getMenuSecondColumn(menuCard);
-    const notiList = notiCard.querySelector('[data-slot="BoxContent"]'); 
+    const notiList = notiCard.querySelector('[data-slot="BoxContent"]');
     if (!targetCol || !notiList) return false;
 
     const block = document.createElement('div');
@@ -63,7 +77,7 @@
     block.appendChild(notiList);
     targetCol.appendChild(block);
 
-    notiCard.style.setProperty('display', 'none', 'important'); 
+    notiCard.style.setProperty('display', 'none', 'important');
     return true;
   }
 
@@ -75,8 +89,8 @@
     const menuCard = findCardByTitle('Menu');
     if (!menuCard) return false;
 
-    const split = menuCard.parentElement;                 
-    const mainWrap = split && split.parentElement;        
+    const split = menuCard.parentElement;
+    const mainWrap = split && split.parentElement;
     if (!split || !mainWrap) return false;
 
     // safety check, to check that both element exist
@@ -87,7 +101,7 @@
     mainWrap.style.setProperty('max-width', 'min(95vw, 112rem)', 'important');
 
     // gathering the elements of right side 
-     const rightItems = [];
+    const rightItems = [];
     for (let n = split.nextElementSibling; n; n = n.nextElementSibling) {
       rightItems.push(n);
     }
@@ -107,7 +121,7 @@
 
     row.appendChild(leftCol);
     row.appendChild(rightCol);
-    mainWrap.insertBefore(row, split); 
+    mainWrap.insertBefore(row, split);
 
     split.style.setProperty('display', 'none', 'important');
     return true;
@@ -130,11 +144,11 @@
       return h3 ? h3.parentElement : null;
     };
     const secPages = sectionByTitle('My Pages');
-    const secNoti = sectionByTitle('Notifications'); 
+    const secNoti = sectionByTitle('Notifications');
     const secQuick = sectionByTitle('Quicklinks');
     if (!secPages || !secNoti || !secQuick) return false; // if not ready, skip 
 
-  
+
     menuCard.querySelectorAll('ul').forEach((ul) => {
       ul.classList.remove('lg:columns-2', 'columns-2');
     });
@@ -149,7 +163,7 @@
     menuCard.dataset.rangiTidy = '1';
     return true;
   }
-  
+
   // place 'My Dashboard' n the center of dashboard page 
   function embedDashboardTitle() {
     const TITLE_ID = '__rangi-dashboard-title';
@@ -166,31 +180,31 @@
     });
     if (!h2 || !redHeader) return false;
 
-    redHeader.style.setProperty('position', 'relative'); 
+    redHeader.style.setProperty('position', 'relative');
 
     const span = document.createElement('span');
-    span.id = TITLE_ID; 
+    span.id = TITLE_ID;
     span.textContent = 'My Dashboard';
-    span.className = 'text-lg font-bold whitespace-nowrap'; 
+    span.className = 'text-lg font-bold whitespace-nowrap';
     redHeader.insertBefore(span, redHeader.firstChild);
 
-    h2.style.setProperty('display', 'none', 'important'); 
+    h2.style.setProperty('display', 'none', 'important');
     return true;
   }
 
-  const RETRY_INTERVAL = 200; 
-  const MAX_RETRY = 25;       
+  const RETRY_INTERVAL = 200;
+  const MAX_RETRY = 25;
 
   (function attempt(count) {
-    const doneA = mergeNotifications();     
-    const doneB = buildTwoColumn();         
-    const doneC = tidyMenu();               
-    const doneD = embedDashboardTitle();    
-    if (doneA && doneB && doneC && doneD) { reveal(); return; } 
+    const doneA = mergeNotifications();
+    const doneB = buildTwoColumn();
+    const doneC = tidyMenu();
+    const doneD = embedDashboardTitle();
+    if (doneA && doneB && doneC && doneD) { reveal(); return; }
     if (count < MAX_RETRY) {
       setTimeout(() => attempt(count + 1), RETRY_INTERVAL);
     } else {
-      reveal(); 
+      reveal();
     }
   })(0);
 })();

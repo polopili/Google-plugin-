@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Daily Notices</title>
+  <link rel="stylesheet" href="DailyNotice.css">
+</head>
+<body>
+  <div class="layout">
+    <button id="toggle-sidebar" class="side-tab" title="Hide date list" aria-expanded="true">«</button>
+
+    <aside class="sidebar">
+      <div class="sidebar-head">
+        <h1 class="sidebar-title">Daily Notices</h1>
+      </div>
+      <nav id="date-list" class="date-list" aria-label="Notice dates">
+        <p class="sidebar-hint">Fetching…</p>
+      </nav>
+    </aside>
+
+    <main class="main">
+      <div class="main-head">
+        <div class="current">
+          <span id="current-date" class="current-date">—</span>
+          <span id="current-weekday" class="current-weekday"></span>
+        </div>
+        <a id="open-pdf" class="pdf-link" target="_blank" rel="noopener" hidden>Original PDF ↗</a>
+      </div>
+
+      <article id="output" class="notice" aria-live="polite"></article>
+    </main>
+  </div>
+
+  <!-- type="module" as import pdf.mjs is needed -->
+  <script type="module" src="./DailyNotice.js"></script>
+</body>
+</html>
